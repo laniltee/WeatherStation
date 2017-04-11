@@ -130,11 +130,13 @@ public class BaseStationManager extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         cmbBaseStations = new javax.swing.JComboBox();
-        btnOpenBaseStation = new javax.swing.JButton();
-        txtLoginKey = new javax.swing.JTextField();
+        btnOpenBase = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         cmbSensors = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
+        txtLoginKey = new javax.swing.JPasswordField();
+        jLabel9 = new javax.swing.JLabel();
+        txtRefreshInt = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         txtServerName = new javax.swing.JTextField();
@@ -216,14 +218,12 @@ public class BaseStationManager extends javax.swing.JFrame {
             }
         });
 
-        btnOpenBaseStation.setText("Open Base Station");
-        btnOpenBaseStation.addActionListener(new java.awt.event.ActionListener() {
+        btnOpenBase.setText("Open Base Station");
+        btnOpenBase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpenBaseStationActionPerformed(evt);
+                btnOpenBaseActionPerformed(evt);
             }
         });
-
-        txtLoginKey.setText("Kandy123");
 
         jLabel6.setText("Login Password");
 
@@ -236,22 +236,34 @@ public class BaseStationManager extends javax.swing.JFrame {
 
         jLabel8.setText("Available Sensors");
 
+        txtLoginKey.setText("Kandy123");
+
+        jLabel9.setText("Refresh Interval (Min.)");
+
+        txtRefreshInt.setText("1");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbSensors, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnOpenBaseStation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtLoginKey)
-                    .addComponent(cmbBaseStations, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbSensors, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnOpenBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbBaseStations, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtLoginKey)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtRefreshInt)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -267,11 +279,15 @@ public class BaseStationManager extends javax.swing.JFrame {
                     .addComponent(cmbSensors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLoginKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(txtLoginKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnOpenBaseStation)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRefreshInt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnOpenBase)
+                .addContainerGap())
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Server Connection Information"));
@@ -352,13 +368,13 @@ public class BaseStationManager extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnOpenBaseStationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenBaseStationActionPerformed
+    private void btnOpenBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenBaseActionPerformed
         if (connected && !txtLoginKey.getText().equals("")) {
             String selectedStation = cmbBaseStations.getSelectedItem().toString();
             String selectedSensor = cmbSensors.getSelectedItem().toString();
@@ -366,8 +382,8 @@ public class BaseStationManager extends javax.swing.JFrame {
             float max = getMax(selectedSensor);
             float min = getMin(selectedSensor);
             String password = txtLoginKey.getText();
-            final int rInt = 30;
-            out.println("OPEN_BASE&" + selectedStation + "&" + password + "&" + selectedSensor + "&" + unit + "&" + min + "&" + max + "&" + 1);
+            Integer rInt = Integer.parseInt(txtRefreshInt.getText()) * 60 * 10000;
+            out.println("OPEN_BASE&" + selectedStation + "&" + password + "&" + selectedSensor + "&" + unit + "&" + min + "&" + max + "&" + rInt);
             try {
                 if (in.readLine().equals("LOGIN_VALIDATED")) {
                     showAlert("Login Succesful ! :)");
@@ -380,7 +396,7 @@ public class BaseStationManager extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Make sure you are connected to the server and has entered the password !");
         }
-    }//GEN-LAST:event_btnOpenBaseStationActionPerformed
+    }//GEN-LAST:event_btnOpenBaseActionPerformed
 
     private void txtNewPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewPasswordActionPerformed
         // TODO add your handling code here:
@@ -485,7 +501,7 @@ public class BaseStationManager extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConnectServer;
-    private javax.swing.JButton btnOpenBaseStation;
+    private javax.swing.JButton btnOpenBase;
     private javax.swing.JButton btnStartNewBaseStation;
     private javax.swing.JComboBox cmbBaseStations;
     private javax.swing.JComboBox cmbSensors;
@@ -497,13 +513,15 @@ public class BaseStationManager extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblServerStatus;
     private javax.swing.JTextField txtBaseStationLocation;
-    private javax.swing.JTextField txtLoginKey;
+    private javax.swing.JPasswordField txtLoginKey;
     private javax.swing.JPasswordField txtNewPassword;
+    private javax.swing.JTextField txtRefreshInt;
     private javax.swing.JTextField txtServerKey;
     private javax.swing.JTextField txtServerName;
     private javax.swing.JTextField txtServerPort;
