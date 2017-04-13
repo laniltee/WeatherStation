@@ -27,7 +27,9 @@ public class BaseStationManager extends javax.swing.JFrame {
     private PrintWriter out;
     private BufferedReader in;
     boolean connected;
-
+    private String serverHost;
+    private int serverPort;
+    
     private String[] baseStationsList;
 
     /**
@@ -39,6 +41,8 @@ public class BaseStationManager extends javax.swing.JFrame {
     }
 
     private void initializeServerConnection(String host, int port) throws IOException {
+        this.serverHost = host;
+        this.serverPort = port;
         serverSocket = new Socket(host, port);
         out = new PrintWriter(serverSocket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(serverSocket.getInputStream()));
@@ -388,6 +392,7 @@ public class BaseStationManager extends javax.swing.JFrame {
                 String response = in.readLine();
                 if (response.equals("LOGIN_VALIDATED")) {
                     showAlert("Login Succesful ! :)");
+                    new Thread(new BaseStationModel(selectedSensor, selectedStation, unit, min, max, 30000, serverHost, serverPort)).start();
                 } else {
                     showAlert("Login Failed ! :( " + response);
                 }
