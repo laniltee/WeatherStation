@@ -43,7 +43,7 @@ public class BaseStationManager extends javax.swing.JFrame {
         out = new PrintWriter(serverSocket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(serverSocket.getInputStream()));
         connected = true;
-
+        this.setTitle("Sensor Emulator " + serverSocket.getLocalAddress() + ":" + serverSocket.getLocalPort());
     }
 
     private void destroyServerConnection() throws IOException {
@@ -385,10 +385,11 @@ public class BaseStationManager extends javax.swing.JFrame {
             Integer rInt = Integer.parseInt(txtRefreshInt.getText()) * 60 * 10000;
             out.println("OPEN_BASE&" + selectedStation + "&" + password + "&" + selectedSensor + "&" + unit + "&" + min + "&" + max + "&" + rInt);
             try {
-                if (in.readLine().equals("LOGIN_VALIDATED")) {
+                String response = in.readLine();
+                if (response.equals("LOGIN_VALIDATED")) {
                     showAlert("Login Succesful ! :)");
                 } else {
-                    showAlert("Login Failed ! :(");
+                    showAlert("Login Failed ! :( " + response);
                 }
             } catch (IOException ex) {
                 showAlert(ex.getMessage());
