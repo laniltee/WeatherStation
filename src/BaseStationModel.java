@@ -1,8 +1,5 @@
 
-import java.awt.Container;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -86,6 +83,7 @@ public class BaseStationModel implements Runnable {
         frame.setVisible(true);
         lblLocation.setText("Location: " + location);
         lblSensor.setText("Sensor: " + sensor);
+        frame.setResizable(false);
         frame.setTitle(controllerSocket.getLocalSocketAddress().toString());
 
         btnStop.addActionListener((ActionEvent e) -> {
